@@ -56,18 +56,27 @@ const Expertise = () => {
                 {/* Scrolling Cards Section */}
                 <motion.div style={{ x }} className="flex gap-10 pl-5 md:pl-20 items-stretch h-[500px]">
                     {expertiseData.map((item, index) => (
-                        <div
+                        <motion.div
                             key={index}
-                            className="relative min-w-[400px] w-[400px] flex-shrink-0 border border-white/10 p-10  flex flex-col justify-between bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-300 rounded-lg"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            whileHover={{
+                                scale: 1.02,
+                                backgroundColor: "rgba(255, 255, 255, 0.05)",
+                                borderColor: "rgba(255, 255, 255, 0.3)"
+                            }}
+                            className="relative min-w-[400px] w-[400px] flex-shrink-0 border border-white/10 p-10 flex flex-col justify-between bg-white/[0.02] rounded-lg group cursor-default"
                         >
                             <div>
-                                <span className="absolute top-10 right-10 text-4xl font-cabinet text-white opacity-80">{item.num}</span>
-                                <h3 className="text-3xl font-bold mb-2 text-white">{item.title}</h3>
+                                <span className="absolute top-10 right-10 text-4xl font-cabinet text-white opacity-40 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-[10deg]">{item.num}</span>
+                                <h3 className="text-3xl font-bold mb-2 text-white transition-transform duration-500 group-hover:-translate-y-2">{item.title}</h3>
                             </div>
-                            <p className="text-lg text-text-secondary leading-relaxed">
+                            <p className="text-lg text-text-secondary leading-relaxed transition-all duration-500 group-hover:text-white/90 group-hover:-translate-y-1">
                                 {item.desc}
                             </p>
-                        </div>
+                        </motion.div>
                     ))}
 
                     {/* Spacer to Ensure Full Scroll */}

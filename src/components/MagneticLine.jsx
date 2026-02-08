@@ -79,7 +79,7 @@ const MagneticLine = () => {
             <svg className="w-full h-full block">
                 <path
                     ref={path}
-                    className="stroke-black/25 fill-none stroke-[1px]"
+                    className="stroke-black/30 fill-none stroke-[1px]"
                 ></path>
             </svg>
         </div>

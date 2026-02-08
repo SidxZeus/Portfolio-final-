@@ -65,7 +65,7 @@ const Work = () => {
             <div className="container mx-auto px-5 relative z-10">
                 <div className="flex items-baseline mb-[60px] border-b border-black/10 pb-5">
                     <h2 className="text-[3rem] font-bold uppercase mr-5 text-black">Selected Work</h2>
-                    <span className="text-[1.2rem] text-black/60 font-main">(01)</span>
+                    <span className="text-[1.2rem] text-black/60 font-main"></span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
