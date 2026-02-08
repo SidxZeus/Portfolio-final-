@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@100,200,300,400,500,700,800,900&display=swap');
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('./assets/CabinetGrotesk-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    --color-bg-color: #121212;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #999999;
+    --color-accent: #D4F234;
+    --color-border: rgba(255, 255, 255, 0.1);
+  }
+
+  :root[data-theme="light"] {
+    --color-bg-color: #f0f0f0;
+    --color-text-primary: #121212;
+    --color-text-secondary: #555555;
+    --color-accent: #000000;
+    --color-border: rgba(0, 0, 0, 0.1);
+  }
+}
+
+@theme {
+  --color-bg-color: var(--color-bg-color);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-accent: var(--color-accent);
+
+  --font-main: 'Cabinet Grotesk', sans-serif;
+  --font-cabinet-grotesk: 'Cabinet Grotesk', sans-serif;
+}
+
+@layer utilities {
+  .font-cabinet {
+    font-family: 'Cabinet Grotesk', sans-serif;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg-color text-text-primary font-main overflow-x-hidden antialiased transition-colors duration-300;
+  }
+
+  /* Hide custom cursor when this class is on body */
+  body.hide-custom-cursor .custom-cursor-element {
+    opacity: 0 !important;
+    transition: opacity 0.2s ease;
+  }
+
+  /* Dark custom cursor for white sections */
+  body.dark-cursor .custom-cursor-element {
+    border-color: #000000 !important;
+  }
+}
+
+@layer utilities {
+  .bg-dot-white {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23ffffff' fill-opacity='0.2'/%3E%3C/svg%3E");
+    background-size: 20px 20px;
+  }
+
+  .bg-dot-white-active {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23ffffff' fill-opacity='1'/%3E%3C/svg%3E");
+    background-size: 20px 20px;
+  }
+}
+
+/* Custom Scrollbar */
+/* Hide Scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
+/* Wave Animation Keyframes */
+@keyframes wave-scroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes wave-scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
