@@ -47,7 +47,7 @@ const Work = () => {
             onMouseLeave={() => document.body.classList.remove('dark-cursor')}
         >
             {/* Curve Transition */}
-            <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] transform -translate-y-[99%] z-10">
+            <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] transform -translate-y-[99%] z-10 pointer-events-none">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 1440 320"
@@ -90,7 +90,7 @@ const Work = () => {
                                     style={{ borderColor: project.color }}
                                 >
                                     <span
-                                        className="opacity-0 translate-y-5 text-lg font-semibold transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
+                                        className="opacity-0 translate-y-5 text-xl font-bold transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0"
                                         style={{ color: project.color }}
                                     >
                                         View Case

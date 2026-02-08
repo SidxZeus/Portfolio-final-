@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import sidLogo from '../assets/sid.svg';
+import gojoImg from '../assets/gojo.jpg';
 import RollingLink from './RollingLink';
 import { FaLinkedinIn, FaWhatsapp, FaGithub } from 'react-icons/fa';
 import { MdGraphicEq } from 'react-icons/md';
 import AnimatedText from './AnimatedText';
 import MagneticButton from './MagneticButton';
+import VerticalMagneticLine from './VerticalMagneticLine';
 
 import Spline from '@splinetool/react-spline';
 
@@ -65,20 +68,33 @@ const WaveAnimation = () => {
 };
 
 const Hero = ({ loading }) => {
+    const mouseX = React.useRef(0);
+    const mouseY = React.useRef(0);
 
+    // Mouse position state for parallax
+    const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e) => {
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+        // Calculate position relative to center (-1 to 1)
+        const x = (clientX - innerWidth / 2) / (innerWidth / 2);
+        const y = (clientY - innerHeight / 2) / (innerHeight / 2);
+        setMousePosition({ x, y });
+    };
 
     return (
         <section
             className="h-screen flex items-center justify-center relative overflow-hidden"
             onMouseEnter={() => document.body.classList.add('dark-cursor')}
             onMouseLeave={() => document.body.classList.remove('dark-cursor')}
+            onMouseMove={handleMouseMove}
         >
             {/* Spline 3D Background */}
-            {/* Spline 3D Background */}
-            {/* Spline 3D Background */}
-            {/* <div className="absolute w-full h-full left-0 top-0 z-0 scale-[1.5] origin-center pointer-events-none">
-                <Spline scene="https://prod.spline.design/vmWGmCNABAYhSCNl/scene.splinecode" />
-            </div> */}
+            {/* Background Image */}
+            <div className="absolute w-full h-full left-0 top-0 z-0 pointer-events-none">
+                <img src={gojoImg} alt="Hero Background" className="w-full h-full object-cover opacity-50" />
+            </div>
 
 
             {/* Navbar */}
@@ -99,8 +115,7 @@ const Hero = ({ loading }) => {
             <div className="absolute left-4 md:left-8 bottom-0 flex flex-col items-center gap-6 z-20 pb-10">
                 {/* Line and Dot */}
                 <div className="flex flex-col items-center gap-0">
-                    <div className="w-[1px] h-[350px] bg-black opacity-50"></div>
-                    <div className="w-[6px] h-[6px] rounded-full bg-black opacity-50"></div>
+                    <VerticalMagneticLine />
                 </div>
 
                 {/* Icons */}
@@ -124,22 +139,38 @@ const Hero = ({ loading }) => {
             </div>
 
             <div className="flex flex-col items-center text-center z-10 px-5 text-black">
-                <div className="font-cabinet-grotesk text-[1.2rem] xs:text-[1.5rem] sm:text-[1.6rem] md:text-[1.65rem] lg:text-[1.6rem]  text-center mb-5 lg:mb-4 word">
+                <motion.div
+                    className="font-cabinet-grotesk text-[1.2rem] xs:text-[1.5rem] sm:text-[1.6rem] md:text-[1.65rem] lg:text-[1.6rem]  text-center mb-5 lg:mb-4 word"
+                    animate={{ x: mousePosition.x * -10, y: mousePosition.y * -10 }}
+                    transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+                >
                     <AnimatedText text="Hi! i’m Sid" className="inline-block" el="span" shouldAnimate={!loading} baseDelay={0.5} />
-                </div>
-                <h1 className="font-cabinet-grotesk text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] 2xl:text-[6rem]  text-center word leading-none -mb-3">
+                </motion.div>
+                <motion.h1
+                    className="font-cabinet-grotesk text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] 2xl:text-[6rem]  text-center word leading-none -mb-3"
+                    animate={{ x: mousePosition.x * -20, y: mousePosition.y * -20 }}
+                    transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+                >
                     <AnimatedText text="Full-stack Developer" className="inline-block" el="span" shouldAnimate={!loading} baseDelay={0.5} />
-                </h1>
+                </motion.h1>
 
-                <p className="font-cabinet-grotesk text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] 2xl:text-[6rem]  pb-1 text-center word leading-none">
+                <motion.p
+                    className="font-cabinet-grotesk text-[2.3rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[5.4rem] 2xl:text-[6rem]  pb-1 text-center word leading-none"
+                    animate={{ x: mousePosition.x * -30, y: mousePosition.y * -30 }}
+                    transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+                >
                     <AnimatedText text="UI & UX Designer." className="inline-block" el="span" shouldAnimate={!loading} baseDelay={0.5} />
-                </p>
+                </motion.p>
 
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+                <motion.div
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                >
                     <div className="text-base tracking-[2px] text-black font-cabinet-grotesk font-medium">
                         scroll down
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* Horizontal Wave in Circle - Bottom Right */}
@@ -147,7 +178,10 @@ const Hero = ({ loading }) => {
             {/* Horizontal Wave in Circle - Bottom Right */}
             {/* Vertical Name - Right Center */}
             <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-6">
-                <div className="writing-vertical-rl text-black/90 tracking-[0.2em] font-light text-sm uppercase rotate-180" style={{ writingMode: 'vertical-rl' }}>
+                <div
+                    className="writing-vertical-rl text-black/90 tracking-[0.2em] font-light text-sm uppercase rotate-180 hover:tracking-[0.5em] transition-all duration-500 cursor-default"
+                    style={{ writingMode: 'vertical-rl' }}
+                >
                     Siddhu Nitin Kamble
                 </div>
             </div>

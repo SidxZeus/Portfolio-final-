@@ -129,7 +129,7 @@ const Timeline = () => {
             {/* Timeline Content Container */}
             <div ref={containerRef} className="relative w-full max-w-7xl mx-auto px-4">
                 {/* Central Line Container */}
-                <div className="absolute left-1/2 top-10 bottom-0 w-[1px] bg-white/10 -translate-x-1/2 z-0">
+                <div className="absolute left-1/2 top-10 bottom-0 w-[2px] bg-white/10 -translate-x-1/2 z-0">
                     {/* Filling Line */}
                     <motion.div
                         style={{ height }}

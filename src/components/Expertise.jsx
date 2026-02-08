@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const expertiseData = [
     {
         num: '01',
-        title: 'Full Stack Development',
+        title: <>Full Stack <br /> Development</>,
         desc: 'Building scalable and high-performance web applications using Next.js, React, Node.js, and TypeScript, with robust backend architectures, secure RESTful APIs, and clean code practices.'
     },
     {
@@ -15,7 +15,7 @@ const expertiseData = [
     {
         num: '03',
         title: 'SaaS Platform Development',
-        desc: 'Developing end-to-end SaaS solutions with subscription systems, Stripe billing, and multi-tenant management. Ensuring scalability and secure user management.'
+        desc: 'Developing and designing end-to-end SaaS solutions with subscription systems, Stripe billing, and multi-tenant management. Ensuring scalability and secure user management.'
     },
     {
         num: '04',
@@ -58,11 +58,11 @@ const Expertise = () => {
                     {expertiseData.map((item, index) => (
                         <div
                             key={index}
-                            className="min-w-[400px] w-[400px] flex-shrink-0 border border-white/10 p-10 flex flex-col justify-between bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-300 rounded-lg"
+                            className="relative min-w-[400px] w-[400px] flex-shrink-0 border border-white/10 p-10  flex flex-col justify-between bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-300 rounded-lg"
                         >
                             <div>
-                                <span className="text-4xl font-cabinet text-white block mb-5">{item.num}</span>
-                                <h3 className="text-3xl font-bold mb-5 text-white">{item.title}</h3>
+                                <span className="absolute top-10 right-10 text-4xl font-cabinet text-white opacity-80">{item.num}</span>
+                                <h3 className="text-3xl font-bold mb-2 text-white">{item.title}</h3>
                             </div>
                             <p className="text-lg text-text-secondary leading-relaxed">
                                 {item.desc}
