@@ -10,7 +10,7 @@ const Preloader = () => {
         if (index < greetings.length - 1) {
             const timeout = setTimeout(() => {
                 setIndex(prev => prev + 1);
-            }, 500); // Change text every 500ms
+            }, 700); // Change text every 500ms
             return () => clearTimeout(timeout);
         }
     }, [index]);

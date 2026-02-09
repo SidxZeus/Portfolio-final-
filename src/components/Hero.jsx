@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import sidLogo from '../assets/sid.svg';
+import sidLogo from '../assets/sid.png';
 import gojoImg from '../assets/gojo.jpg';
 import RollingLink from './RollingLink';
 import { FaLinkedinIn, FaWhatsapp, FaGithub } from 'react-icons/fa';
@@ -85,7 +85,7 @@ const Hero = ({ loading }) => {
 
     return (
         <section
-            className="h-screen flex items-center justify-center relative overflow-hidden"
+            className="h-[103dvh] flex items-center justify-center relative overflow-hidden"
             onMouseEnter={() => document.body.classList.add('dark-cursor')}
             onMouseLeave={() => document.body.classList.remove('dark-cursor')}
             onMouseMove={handleMouseMove}
